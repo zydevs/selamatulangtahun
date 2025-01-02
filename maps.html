@@ -1,0 +1,3190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <!-- <meta name="mobile-web-app-capable" content="yes"> -->
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
+    <link rel="stylesheet" href="css/L.Control.Locate.min.css">
+    <link rel="stylesheet" href="css/qgis2web.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="css/leaflet-search.css">
+    <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+    <link rel="stylesheet" href="css/leaflet-measure.css">
+
+    <title>Maps - Realtime Climate Monitoring</title>
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web GIS Monitoring Suhu & Kelembaban Kabupaten Sleman, DIY">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/font.css">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/components.css">
+    <link rel="stylesheet" type="text/css" href="./css/maps.css">
+    <link rel="stylesheet" type="text/css" href="./css/animation.css">
+</head>
+<body>
+    <!-- navigation -->
+    <div class="maps">
+        <!-- map -->
+        <div class="container-xs">
+            <div class="maps-section_content">
+                <div class="maps-section_navbar">
+                    <!-- navbar -->
+                    <div class="header">
+                        <a href="./index.html">
+                            <p class="ui headings size-texts">Home</p>
+                        </a>
+                        <a href="./maps.html" class="">
+                            <p class="ui headings size-texts">Maps</p>
+                        </a>
+                        <a href="./about.html" class="">
+                            <p class="ui headings size-texts">About Us</p>
+                        </a>
+                    </div>
+                    <div id="map" class="webgis-content">
+                        <iframe
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="maps-section_map">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- MAPS -->
+            <!-- <div class="webgis-content" id="map"></div> -->
+
+            <div class="column">
+                <!-- detail monitoring -->
+                <div class="listdescription">
+                    <div class="maps_monitoring-row-1">
+                        <h3 class="maps-address-text ui headings size-textsx" id="datetime-display">
+                            <!-- Waktu akan dimasukkan di sini -->
+                        </h3>
+                    </div>                    
+                    <!-- titik 1 -->
+                    <div class="weather-monitoring-dashboard">
+                        <div class="maps_monitoring-section container-xs">
+                            <div class="maps_monitoring-row-2">
+                                <h3 class="maps-address-text ui heading size-textsx">
+                                    <span>Koordinat :&nbsp;</span>
+                                    <span class="maps_address-span" id="coordinate1"></span>
+
+                                    <span><br>Address :&nbsp;</span>
+                                    <span class="maps_address-span">
+                                        Jalan Jlatren - Pereng, Sumberharjo, Prambanan, Kabupaten Sleman, Daerah Istimewa Yogyakarta, Jawa, 55572, Indonesia
+                                        <br>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="weather-monitoring-dashboard_details-row">
+                                    <div class="weather-monitoring-dashboard_label">
+                                        <div class="weather-monitoring-dashboard_counter-column">
+                                            <h3 class="ui heading size-headinglg">Titik 1</h3>
+                                            <div class="weather-monitoring-dashboard_line"></div>
+                                        </div>
+                                        <div class="weather-monitoring-dashboard_monitoring-column">
+
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center;">
+                                                        Pemantauan Suhu
+                                                    </h4>
+                                                    <br>
+                                                    <h1 class="ui heading size-heading2x1" id="suhu-titik1">
+                                                        
+                                                    </h1>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="weather-monitoring-dashboard_temperature-line"></div>
+                                                <br>
+                                            </div>
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center">
+                                                        Pemantauan Kelembaban
+                                                    </h4>
+                                                    <h1 class="ui heading size-heading2x1" id="kelembaban-titik1">
+                                                        
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="weather-monitoring-dashboard_graphs-column">
+                                        <div class="weather-monitoring-dashboard_button-row">
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Suhu Titik 1
+                                            </button>
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Kelembaban 1
+                                            </button>
+                                        </div>
+                                        <div class="maps_monitoring-container">
+                                            <!-- suhu -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799236/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                            <!-- kelembaban -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799236/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- titik 2 -->
+                    <div class="weather-monitoring-dashboard">
+                        <div class="maps_monitoring-section container-xs">
+                            <div class="maps_monitoring-row-2">
+                                <h3 class="maps-address-text ui heading size-textsx">
+                                    <span>Koordinat :&nbsp;</span>
+                                    <span class="maps_address-span" id="coordinate2"></span>
+                                    <span><br>Address :&nbsp;</span>
+                                    <span class="maps_address-span">
+                                        Rencana Jalan ke arah Wonosari, Sambirejo, Prambanan, Kabupaten Sleman, Daerah Istimewa Yogyakarta, Jawa, 55572, Indonesia
+                                        <br>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="weather-monitoring-dashboard_details-row">
+                                    <div class="weather-monitoring-dashboard_label">
+                                        <div class="weather-monitoring-dashboard_counter-column">
+                                            <h3 class="ui heading size-headinglg">Titik 2</h3>
+                                            <div class="weather-monitoring-dashboard_line"></div>
+                                        </div>
+                                        <div class="weather-monitoring-dashboard_monitoring-column">
+
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center;">
+                                                        Pemantauan Suhu
+                                                    </h4>
+                                                    <br>
+                                                    <h1 class="ui heading size-heading2x1" id="suhu-titik2">
+                                                        
+                                                    </h1>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="weather-monitoring-dashboard_temperature-line"></div>
+                                                <br>
+                                            </div>
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center">
+                                                        Pemantauan Kelembaban
+                                                    </h4>
+                                                    <h1 class="ui heading size-heading2x1" id="kelembaban-titik2">
+                                                        
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="weather-monitoring-dashboard_graphs-column">
+                                        <div class="weather-monitoring-dashboard_button-row">
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Suhu Titik 2
+                                            </button>
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Kelembaban 2
+                                            </button>
+                                        </div>
+                                        <div class="maps_monitoring-container">
+                                            <!-- suhu -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799238/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                            <!-- kelembaban -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799238/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- titik 3 -->
+                    <div class="weather-monitoring-dashboard">
+                        <div class="maps_monitoring-section container-xs">
+                            <div class="maps_monitoring-row-2">
+                                <h3 class="maps-address-text ui heading size-textsx">
+                                    <span>Koordinat :&nbsp;</span>
+                                    <span class="maps_address-span" id="coordinate3"></span>
+                                    <span><br>Address :&nbsp;</span>
+                                    <span class="maps_address-span">
+                                        Jalan Dewadaru, Trihanggo, Gamping, Sleman, Daerah Istimewa Yogyakarta, Jawa, 55592, Indonesia
+                                        <br>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="weather-monitoring-dashboard_details-row">
+                                    <div class="weather-monitoring-dashboard_label">
+                                        <div class="weather-monitoring-dashboard_counter-column">
+                                            <h3 class="ui heading size-headinglg">Titik 3</h3>
+                                            <div class="weather-monitoring-dashboard_line"></div>
+                                        </div>
+                                        <div class="weather-monitoring-dashboard_monitoring-column">
+
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center;">
+                                                        Pemantauan Suhu
+                                                    </h4>
+                                                    <br>
+                                                    <h1 class="ui heading size-heading2x1" id="suhu-titik3">
+                                                    </h1>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="weather-monitoring-dashboard_temperature-line"></div>
+                                                <br>
+                                            </div>
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center">
+                                                        Pemantauan Kelembaban
+                                                    </h4>
+                                                    <h1 class="ui heading size-heading2x1" id="kelembaban-titik3">
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="weather-monitoring-dashboard_graphs-column">
+                                        <div class="weather-monitoring-dashboard_button-row">
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Suhu Titik 3
+                                            </button>
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Kelembaban 3
+                                            </button>
+                                        </div>
+                                        <div class="maps_monitoring-container">
+                                            <!-- suhu -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799243/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                            <!-- kelembaban -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799243/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- titik 4 -->
+                    <div class="weather-monitoring-dashboard">
+                        <div class="maps_monitoring-section container-xs">
+                            <div class="maps_monitoring-row-2">
+                                <h3 class="maps-address-text ui heading size-textsx">
+                                    <span>Koordinat :&nbsp;</span>
+                                    <span class="maps_address-span" id="coordinate4"></span>
+                                    <span><br>Address :&nbsp;</span>
+                                    <span class="maps_address-span">
+                                        Margoluwih, Seyegan, Sleman, Daerah Istimewa Yogyakarta, Jawa, 55564, Indonesia
+                                        <br>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="weather-monitoring-dashboard_details-row">
+                                    <div class="weather-monitoring-dashboard_label">
+                                        <div class="weather-monitoring-dashboard_counter-column">
+                                            <h3 class="ui heading size-headinglg">Titik 4</h3>
+                                            <div class="weather-monitoring-dashboard_line"></div>
+                                        </div>
+                                        <div class="weather-monitoring-dashboard_monitoring-column">
+
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center;">
+                                                        Pemantauan Suhu
+                                                    </h4>
+                                                    <br>
+                                                    <h1 class="ui heading size-heading2x1" id="suhu-titik4">
+                                                    </h1>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="weather-monitoring-dashboard_temperature-line"></div>
+                                                <br>
+                                            </div>
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center">
+                                                        Pemantauan Kelembaban
+                                                    </h4>
+                                                    <h1 class="ui heading size-heading2x1" id="kelembaban-titik4">
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="weather-monitoring-dashboard_graphs-column">
+                                        <div class="weather-monitoring-dashboard_button-row">
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Suhu Titik 4
+                                            </button>
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Kelembaban 4
+                                            </button>
+                                        </div>
+                                        <div class="maps_monitoring-container">
+                                            <!-- suhu -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799237/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                            <!-- kelembaban -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799237/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- titik 5 -->
+                    <div class="weather-monitoring-dashboard">
+                        <div class="maps_monitoring-section container-xs">
+                            <div class="maps_monitoring-row-2">
+                                <h3 class="maps-address-text ui heading size-textsx">
+                                    <span>Koordinat :&nbsp;</span>
+                                    <span class="maps_address-span" id="coordinate5"></span>
+                                    <span><br>Address :&nbsp;</span>
+                                    <span class="maps_address-span">
+                                        Nogotirto, Gamping, Sleman, Daerah Istimewa Yogyakarta, Jawa, 55592, Indonesia
+                                        <br>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="weather-monitoring-dashboard_details-row">
+                                    <div class="weather-monitoring-dashboard_label">
+                                        <div class="weather-monitoring-dashboard_counter-column">
+                                            <h3 class="ui heading size-headinglg">Titik 5</h3>
+                                            <div class="weather-monitoring-dashboard_line"></div>
+                                        </div>
+                                        <div class="weather-monitoring-dashboard_monitoring-column">
+
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center;">
+                                                        Pemantauan Suhu
+                                                    </h4>
+                                                    <br>
+                                                    <h1 class="ui heading size-heading2x1" id="suhu-titik5">
+                                                    </h1>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="weather-monitoring-dashboard_temperature-line"></div>
+                                                <br>
+                                            </div>
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center">
+                                                        Pemantauan Kelembaban
+                                                    </h4>
+                                                    <h1 class="ui heading size-heading2x1" id="kelembaban-titik5">
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="weather-monitoring-dashboard_graphs-column">
+                                        <div class="weather-monitoring-dashboard_button-row">
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Suhu Titik 5
+                                            </button>
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Kelembaban 5
+                                            </button>
+                                        </div>
+                                        <div class="maps_monitoring-container">
+                                            <!-- suhu -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799239/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                            <!-- kelembaban -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799239/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- titik 6 -->
+                    <div class="weather-monitoring-dashboard">
+                        <div class="maps_monitoring-section container-xs">
+                            <div class="maps_monitoring-row-2">
+                                <h3 class="maps-address-text ui heading size-textsx">
+                                    <span>Koordinat :&nbsp;</span>
+                                    <span class="maps_address-span" id="coordinate6"></span>
+                                    <span><br>Address :&nbsp;</span>
+                                    <span class="maps_address-span">
+                                        Sidomoyo, Godean, Sleman, Daerah Istimewa Yogyakarta, Jawa, 55287, Indonesia
+                                        <br>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="weather-monitoring-dashboard_details-row">
+                                    <div class="weather-monitoring-dashboard_label">
+                                        <div class="weather-monitoring-dashboard_counter-column">
+                                            <h3 class="ui heading size-headinglg">Titik 6</h3>
+                                            <div class="weather-monitoring-dashboard_line"></div>
+                                        </div>
+                                        <div class="weather-monitoring-dashboard_monitoring-column">
+
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center;">
+                                                        Pemantauan Suhu
+                                                    </h4>
+                                                    <br>
+                                                    <h1 class="ui heading size-heading2x1" id="suhu-titik6">
+                                                    </h1>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="weather-monitoring-dashboard_temperature-line"></div>
+                                                <br>
+                                            </div>
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center">
+                                                        Pemantauan Kelembaban
+                                                    </h4>
+                                                    <h1 class="ui heading size-heading2x1" id="kelembaban-titik6">
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="weather-monitoring-dashboard_graphs-column">
+                                        <div class="weather-monitoring-dashboard_button-row">
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Suhu Titik 6
+                                            </button>
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Kelembaban 6
+                                            </button>
+                                        </div>
+                                        <div class="maps_monitoring-container">
+                                            <!-- suhu -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799242/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                            <!-- kelembaban -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799242/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- titik 7 -->
+                    <div class="weather-monitoring-dashboard">
+                        <div class="maps_monitoring-section container-xs">
+                            <div class="maps_monitoring-row-2">
+                                <h3 class="maps-address-text ui heading size-textsx">
+                                    <span>Koordinat :&nbsp;</span>
+                                    <span class="maps_address-span" id="coordinate7"></span>
+                                    <span><br>Address :&nbsp;</span>
+                                    <span class="maps_address-span">
+                                        Sempu, Tlatar, Wono Kerto, Wonokerto, Turi, Sleman, Daerah Istimewa Yogyakarta, Jawa, Indonesia
+                                        <br>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="weather-monitoring-dashboard_details-row">
+                                    <div class="weather-monitoring-dashboard_label">
+                                        <div class="weather-monitoring-dashboard_counter-column">
+                                            <h3 class="ui heading size-headinglg">Titik 7</h3>
+                                            <div class="weather-monitoring-dashboard_line"></div>
+                                        </div>
+                                        <div class="weather-monitoring-dashboard_monitoring-column">
+
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center;">
+                                                        Pemantauan Suhu
+                                                    </h4>
+                                                    <br>
+                                                    <h1 class="ui heading size-heading2x1" id="suhu-titik7">
+                                                    </h1>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="weather-monitoring-dashboard_temperature-line"></div>
+                                                <br>
+                                            </div>
+                                            <div class="weather-monotoring-dashboard_temperature-column">
+                                                <div class="weather-monitoring-dashboard_temperature">
+                                                    <h4 class="ui heading size-headingxs" style="text-align: center">
+                                                        Pemantauan Kelembaban
+                                                    </h4>
+                                                    <h1 class="ui heading size-heading2x1" id="kelembaban-titik7">
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="weather-monitoring-dashboard_graphs-column">
+                                        <div class="weather-monitoring-dashboard_button-row">
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Suhu Titik 7
+                                            </button>
+                                            <button class="weather-monitoring-dashboard_temperature-button ui button gray_700 size-xs fill round">
+                                                Grafik Kelembaban 7
+                                            </button>
+                                        </div>
+                                        <div class="maps_monitoring-container">
+                                            <!-- suhu -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799244/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                            <!-- kelembaban -->
+                                            <div class="maps_monitoring-row">
+                                                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2799244/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+
+    <!-- Panggil file JavaScript -->
+    <script src="script.js"></script>
+
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/L.Control.Layers.Tree.min.js"></script>
+    <script src="js/L.Control.Locate.min.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+    <script src="js/leaflet-measure.js"></script>
+    <script src="js/leaflet.markercluster.js"></script>
+    <script src="js/leaflet-search.js"></script>
+    <script src="data/ADMINISTRASIDESA_AR_25K_2.js"></script>
+    <script src="data/Radius_Pemantauan_3.js"></script>
+    <script src="data/Titik_Pemantauan_UTM_4.js"></script>
+    <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString' || e.target.feature.geometry.type === 'MultiLineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+        }
+        var map = L.map('map', {
+            zoomControl:false, maxZoom:28, minZoom:1
+        }).fitBounds([[-7.806309078364607,110.00962373359674],[-7.428148307666249,110.51025702662353]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        // remove popup's row if "visible-with-data"
+        function removeEmptyRowsFromPopupContent(content, feature) {
+         var tempDiv = document.createElement('div');
+         tempDiv.innerHTML = content;
+         var rows = tempDiv.querySelectorAll('tr');
+         for (var i = 0; i < rows.length; i++) {
+             var td = rows[i].querySelector('td.visible-with-data');
+             var key = td ? td.id : '';
+             if (td && td.classList.contains('visible-with-data') && feature.properties[key] == null) {
+                 rows[i].parentNode.removeChild(rows[i]);
+             }
+         }
+         return tempDiv.innerHTML;
+        }
+        // add class to format popup if it contains media
+		function addClassToPopupIfMedia(content, popup) {
+			var tempDiv = document.createElement('div');
+			tempDiv.innerHTML = content;
+			if (tempDiv.querySelector('td img')) {
+				popup._contentNode.classList.add('media');
+					// Delay to force the redraw
+					setTimeout(function() {
+						popup.update();
+					}, 10);
+			} else {
+				popup._contentNode.classList.remove('media');
+			}
+		}
+        var zoomControl = L.control.zoom({
+            position: 'topleft'
+        }).addTo(map);
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0].innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0].className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        map.createPane('pane_GoogleSatellite_1');
+        map.getPane('pane_GoogleSatellite_1').style.zIndex = 401;
+        var layer_GoogleSatellite_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_1',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleSatellite_1;
+        map.addLayer(layer_GoogleSatellite_1);
+        function pop_ADMINISTRASIDESA_AR_25K_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (var i in e.target._eventParents) {
+                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
+                            e.target._eventParents[i].resetStyle(e.target);
+                        }
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">NAMOBJ</th>\
+                        <td>' + (feature.properties['NAMOBJ'] !== null ? autolinker.link(feature.properties['NAMOBJ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">REMARK</th>\
+                        <td>' + (feature.properties['REMARK'] !== null ? autolinker.link(feature.properties['REMARK'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SHAPE_Leng</th>\
+                        <td class="visible-with-data" id="SHAPE_Leng">' + (feature.properties['SHAPE_Leng'] !== null ? autolinker.link(feature.properties['SHAPE_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SHAPE_Area</th>\
+                        <td>' + (feature.properties['SHAPE_Area'] !== null ? autolinker.link(feature.properties['SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_ADMINISTRASIDESA_AR_25K_2_0(feature) {
+            switch(String(feature.properties['NAMOBJ'])) {
+                case '0':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,169,225,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ambarketawang':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,233,210,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Argomulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,41,221,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Argosari':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(25,224,42,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Baciro':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,96,231,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Balecatur':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,180,59,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Balerante':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(85,123,228,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banguncipto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,236,83,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bangunjiwo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(103,230,107,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bangunkerto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(25,202,46,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banguntapan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,210,80,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banjararum':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,98,147,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banjarharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(138,88,207,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banjarsari':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(193,40,231,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banyuraden':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,34,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banyurejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,222,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Baturetno':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,132,60,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bawukan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,134,77,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bener':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,52,175,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bimomartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(111,151,203,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bligo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,46,74,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bokoharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,123,201,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bugisan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,224,156,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Candibinangun':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,107,116,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Caturharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,235,26,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Caturtunggal':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,210,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Cokrodiningratan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,101,176,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Condongcatur':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(39,143,222,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Demangan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,230,58,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Donoharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,138,113,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Donokerto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(135,206,49,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Gayamharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(60,22,211,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Girikerto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,221,133,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Glagaharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,146,99,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Hargobinangun':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(79,195,213,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Harjobinangun':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,208,184,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Jatisarono':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,77,56,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Jogotirto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(119,221,110,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kalitirto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(138,205,39,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kaliurang':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,17,240,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Karangwaru':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(107,203,24,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Katekan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,95,222,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kebondalem Kidul':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,189,221,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kembang':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,79,188,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kemiren':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,179,21,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kepuharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,172,103,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kepurun':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(14,85,217,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kerten':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,100,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Klitren':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(159,219,127,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kokosan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,226,132,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kotesan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,210,57,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kranggan':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(149,104,205,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kricak':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,209,20,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Leses':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,236,137,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Lumbungrejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(124,192,237,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Madurejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,116,106,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Maguwoharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,35,101,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Margoagung':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,31,209,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Margodadi':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,63,209,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Margokaton':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(156,207,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Margoluwih':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(16,225,211,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Margomulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,202,199,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Margorejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(106,201,222,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Merdikorejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,92,185,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Minomartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,112,107,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Mororejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(113,225,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Mujamuju':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(179,39,226,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ngablak':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(117,204,112,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ngestiharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,74,206,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Nglumut':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,40,200,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ngoro-Oro':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(23,228,64,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Nogotirto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,209,40,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pakembinangun':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,202,118,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pakunden':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,187,29,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pandowoharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,110,233,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Panggang':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(48,42,222,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pereng':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,71,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pondokrejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,45,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Potorono':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(149,123,202,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Purwobinangun':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,58,207,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Purwomartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,207,15,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Salam':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,93,119,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sambirejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,212,139,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sardonoharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,114,236,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sariharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,145,211,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Selomartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,42,117,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sendangadi':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,40,229,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sendangagung':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(95,224,127,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sendangarum':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(196,208,30,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sendangmulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,77,191,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sendangrejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(99,126,225,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sendangsari':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,177,81,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sendangtirto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(94,232,35,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sengon':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(39,206,209,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Serut':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(138,60,206,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sidoagung':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,130,43,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sidoarum':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(97,238,58,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sidokarto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,72,225,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sidoluhur':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,97,113,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sidomoyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(93,189,233,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sidomulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,154,96,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sidorejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(119,124,216,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sinduadi':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,163,57,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sinduharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(50,137,231,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sindumartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,106,182,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sitimulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,154,128,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Somokaton':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,138,218,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Srimartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,92,38,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Srimulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,230,152,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sudimoro':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,71,170,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sukoharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(22,207,227,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumberadi':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,129,98,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumberagung':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,200,24,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumberarum':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,82,161,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumberharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(36,210,175,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumberrahayu':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,51,119,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumberrejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(95,212,95,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sumbersari':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,222,187,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tamanmartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,50,220,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tamantirto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,89,217,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tambakrejo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(175,227,31,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Taskombang':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(90,235,218,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tegaltirto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,222,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Terban':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,70,36,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tirtoadi':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,223,189,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tirtomartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,110,212,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tlogo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(174,55,221,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tlogoadi':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,177,237,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tridadi':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,100,196,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Trihanggo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,119,140,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Triharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,236,175,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Trimulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,157,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Umbulharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(90,199,232,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Umbulmartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,107,107,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Wedomartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,215,128,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Widodomartani':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(48,234,79,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Wijimulyo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,228,49,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Wonokerto':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(97,201,132,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Wukirharjo':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,204,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Wukirsari':
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,118,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(143,15,207,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ADMINISTRASIDESA_AR_25K_2');
+        map.getPane('pane_ADMINISTRASIDESA_AR_25K_2').style.zIndex = 402;
+        map.getPane('pane_ADMINISTRASIDESA_AR_25K_2').style['mix-blend-mode'] = 'normal';
+        var layer_ADMINISTRASIDESA_AR_25K_2 = new L.geoJson(json_ADMINISTRASIDESA_AR_25K_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ADMINISTRASIDESA_AR_25K_2',
+            layerName: 'layer_ADMINISTRASIDESA_AR_25K_2',
+            pane: 'pane_ADMINISTRASIDESA_AR_25K_2',
+            onEachFeature: pop_ADMINISTRASIDESA_AR_25K_2,
+            style: style_ADMINISTRASIDESA_AR_25K_2_0,
+        });
+        bounds_group.addLayer(layer_ADMINISTRASIDESA_AR_25K_2);
+        map.addLayer(layer_ADMINISTRASIDESA_AR_25K_2);
+        function pop_Radius_Pemantauan_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (var i in e.target._eventParents) {
+                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
+                            e.target._eventParents[i].resetStyle(e.target);
+                        }
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>NAMOBJ</strong><br />' + (feature.properties['NAMOBJ'] !== null ? autolinker.link(feature.properties['NAMOBJ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HubDist</th>\
+                        <td>' + (feature.properties['HubDist'] !== null ? autolinker.link(feature.properties['HubDist'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">path</th>\
+                        <td>' + (feature.properties['path'] !== null ? autolinker.link(feature.properties['path'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Suhu</th>\
+                        <td>' + (feature.properties['Suhu'] !== null ? autolinker.link(feature.properties['Suhu'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kelembaban</th>\
+                        <td>' + (feature.properties['Kelembaban'] !== null ? autolinker.link(feature.properties['Kelembaban'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">xcoord</th>\
+                        <td>' + (feature.properties['xcoord'] !== null ? autolinker.link(feature.properties['xcoord'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ycoord</th>\
+                        <td>' + (feature.properties['ycoord'] !== null ? autolinker.link(feature.properties['ycoord'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Foto"colspan="2"><strong>Foto</strong><br />' + (feature.properties['Foto'] !== null ? '<img src="images/' + String(feature.properties['Foto']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Radius_Pemantauan_3_0(feature) {
+            if (feature.properties['Suhu'] >= -10.000000 && feature.properties['Suhu'] <= -0.200000 ) {
+                return {
+                pane: 'pane_Radius_Pemantauan_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,31,138,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Suhu'] >= -0.200000 && feature.properties['Suhu'] <= 6.336000 ) {
+                return {
+                pane: 'pane_Radius_Pemantauan_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(79,146,169,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Suhu'] >= 6.336000 && feature.properties['Suhu'] <= 14.256000 ) {
+                return {
+                pane: 'pane_Radius_Pemantauan_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(156,248,193,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Suhu'] >= 14.256000 && feature.properties['Suhu'] <= 24.120000 ) {
+                return {
+                pane: 'pane_Radius_Pemantauan_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,124,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Suhu'] >= 24.120000 && feature.properties['Suhu'] <= 34.240000 ) {
+                return {
+                pane: 'pane_Radius_Pemantauan_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,0,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Radius_Pemantauan_3');
+        map.getPane('pane_Radius_Pemantauan_3').style.zIndex = 403;
+        map.getPane('pane_Radius_Pemantauan_3').style['mix-blend-mode'] = 'normal';
+        var layer_Radius_Pemantauan_3 = new L.geoJson(json_Radius_Pemantauan_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Radius_Pemantauan_3',
+            layerName: 'layer_Radius_Pemantauan_3',
+            pane: 'pane_Radius_Pemantauan_3',
+            onEachFeature: pop_Radius_Pemantauan_3,
+            style: style_Radius_Pemantauan_3_0,
+        });
+        bounds_group.addLayer(layer_Radius_Pemantauan_3);
+        map.addLayer(layer_Radius_Pemantauan_3);
+        function pop_Titik_Pemantauan_UTM_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (var i in e.target._eventParents) {
+                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
+                            e.target._eventParents[i].resetStyle(e.target);
+                        }
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>NAMOBJ</strong><br />' + (feature.properties['NAMOBJ'] !== null ? autolinker.link(feature.properties['NAMOBJ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Titik_Pemantauan_UTM_4_0() {
+            return {
+                pane: 'pane_Titik_Pemantauan_UTM_4',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,82,45,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Titik_Pemantauan_UTM_4');
+        map.getPane('pane_Titik_Pemantauan_UTM_4').style.zIndex = 404;
+        map.getPane('pane_Titik_Pemantauan_UTM_4').style['mix-blend-mode'] = 'normal';
+        var layer_Titik_Pemantauan_UTM_4 = new L.geoJson(json_Titik_Pemantauan_UTM_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Titik_Pemantauan_UTM_4',
+            layerName: 'layer_Titik_Pemantauan_UTM_4',
+            pane: 'pane_Titik_Pemantauan_UTM_4',
+            onEachFeature: pop_Titik_Pemantauan_UTM_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Titik_Pemantauan_UTM_4_0(feature));
+            },
+        });
+        var cluster_Titik_Pemantauan_UTM_4 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Titik_Pemantauan_UTM_4.addLayer(layer_Titik_Pemantauan_UTM_4);
+
+        bounds_group.addLayer(layer_Titik_Pemantauan_UTM_4);
+        cluster_Titik_Pemantauan_UTM_4.addTo(map);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var overlaysTree = [
+            {label: '<img src="legend/Titik_Pemantauan_UTM_4.png" /> Titik_Pemantauan_UTM', layer: cluster_Titik_Pemantauan_UTM_4},
+            {label: 'Radius_Pemantauan<br /><table><tr><td style="text-align: center;"><img src="legend/Radius_Pemantauan_3_SangatDingin0.png" /></td><td>Sangat Dingin</td></tr><tr><td style="text-align: center;"><img src="legend/Radius_Pemantauan_3_Dingin1.png" /></td><td>Dingin</td></tr><tr><td style="text-align: center;"><img src="legend/Radius_Pemantauan_3_Hangat2.png" /></td><td>Hangat</td></tr><tr><td style="text-align: center;"><img src="legend/Radius_Pemantauan_3_Panas3.png" /></td><td>Panas</td></tr><tr><td style="text-align: center;"><img src="legend/Radius_Pemantauan_3_SangatPanas4.png" /></td><td>Sangat Panas</td></tr></table>', layer: layer_Radius_Pemantauan_3},
+            {label: 'ADMINISTRASIDESA_AR_25K<br /><table><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Ambarketawang1.png" /></td><td>Ambarketawang</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Argomulyo2.png" /></td><td>Argomulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Argosari3.png" /></td><td>Argosari</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Baciro4.png" /></td><td>Baciro</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Balecatur5.png" /></td><td>Balecatur</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Balerante6.png" /></td><td>Balerante</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Banguncipto7.png" /></td><td>Banguncipto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bangunjiwo8.png" /></td><td>Bangunjiwo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bangunkerto9.png" /></td><td>Bangunkerto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Banguntapan10.png" /></td><td>Banguntapan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Banjararum11.png" /></td><td>Banjararum</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Banjarharjo12.png" /></td><td>Banjarharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Banjarsari13.png" /></td><td>Banjarsari</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Banyuraden14.png" /></td><td>Banyuraden</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Banyurejo15.png" /></td><td>Banyurejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Baturetno16.png" /></td><td>Baturetno</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bawukan17.png" /></td><td>Bawukan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bener18.png" /></td><td>Bener</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bimomartani19.png" /></td><td>Bimomartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bligo20.png" /></td><td>Bligo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bokoharjo21.png" /></td><td>Bokoharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Bugisan22.png" /></td><td>Bugisan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Candibinangun23.png" /></td><td>Candibinangun</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Caturharjo24.png" /></td><td>Caturharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Caturtunggal25.png" /></td><td>Caturtunggal</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Cokrodiningratan26.png" /></td><td>Cokrodiningratan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Condongcatur27.png" /></td><td>Condongcatur</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Demangan28.png" /></td><td>Demangan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Donoharjo29.png" /></td><td>Donoharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Donokerto30.png" /></td><td>Donokerto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Gayamharjo31.png" /></td><td>Gayamharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Girikerto32.png" /></td><td>Girikerto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Glagaharjo33.png" /></td><td>Glagaharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Hargobinangun34.png" /></td><td>Hargobinangun</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Harjobinangun35.png" /></td><td>Harjobinangun</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Jatisarono36.png" /></td><td>Jatisarono</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Jogotirto37.png" /></td><td>Jogotirto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kalitirto38.png" /></td><td>Kalitirto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kaliurang39.png" /></td><td>Kaliurang</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Karangwaru40.png" /></td><td>Karangwaru</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Katekan41.png" /></td><td>Katekan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_KebondalemKidul42.png" /></td><td>Kebondalem Kidul</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kembang43.png" /></td><td>Kembang</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kemiren44.png" /></td><td>Kemiren</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kepuharjo45.png" /></td><td>Kepuharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kepurun46.png" /></td><td>Kepurun</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kerten47.png" /></td><td>Kerten</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Klitren48.png" /></td><td>Klitren</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kokosan49.png" /></td><td>Kokosan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kotesan50.png" /></td><td>Kotesan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kranggan51.png" /></td><td>Kranggan</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Kricak52.png" /></td><td>Kricak</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Leses53.png" /></td><td>Leses</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Lumbungrejo54.png" /></td><td>Lumbungrejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Madurejo55.png" /></td><td>Madurejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Maguwoharjo56.png" /></td><td>Maguwoharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Margoagung57.png" /></td><td>Margoagung</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Margodadi58.png" /></td><td>Margodadi</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Margokaton59.png" /></td><td>Margokaton</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Margoluwih60.png" /></td><td>Margoluwih</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Margomulyo61.png" /></td><td>Margomulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Margorejo62.png" /></td><td>Margorejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Merdikorejo63.png" /></td><td>Merdikorejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Minomartani64.png" /></td><td>Minomartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Mororejo65.png" /></td><td>Mororejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Mujamuju66.png" /></td><td>Mujamuju</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Ngablak67.png" /></td><td>Ngablak</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Ngestiharjo68.png" /></td><td>Ngestiharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Nglumut69.png" /></td><td>Nglumut</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_NgoroOro70.png" /></td><td>Ngoro-Oro</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Nogotirto71.png" /></td><td>Nogotirto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Pakembinangun72.png" /></td><td>Pakembinangun</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Pakunden73.png" /></td><td>Pakunden</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Pandowoharjo74.png" /></td><td>Pandowoharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Panggang75.png" /></td><td>Panggang</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Pereng76.png" /></td><td>Pereng</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Pondokrejo77.png" /></td><td>Pondokrejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Potorono78.png" /></td><td>Potorono</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Purwobinangun79.png" /></td><td>Purwobinangun</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Purwomartani80.png" /></td><td>Purwomartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Salam81.png" /></td><td>Salam</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sambirejo82.png" /></td><td>Sambirejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sardonoharjo83.png" /></td><td>Sardonoharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sariharjo84.png" /></td><td>Sariharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Selomartani85.png" /></td><td>Selomartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sendangadi86.png" /></td><td>Sendangadi</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sendangagung87.png" /></td><td>Sendangagung</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sendangarum88.png" /></td><td>Sendangarum</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sendangmulyo89.png" /></td><td>Sendangmulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sendangrejo90.png" /></td><td>Sendangrejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sendangsari91.png" /></td><td>Sendangsari</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sendangtirto92.png" /></td><td>Sendangtirto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sengon93.png" /></td><td>Sengon</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Serut94.png" /></td><td>Serut</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sidoagung95.png" /></td><td>Sidoagung</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sidoarum96.png" /></td><td>Sidoarum</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sidokarto97.png" /></td><td>Sidokarto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sidoluhur98.png" /></td><td>Sidoluhur</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sidomoyo99.png" /></td><td>Sidomoyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sidomulyo100.png" /></td><td>Sidomulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sidorejo101.png" /></td><td>Sidorejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sinduadi102.png" /></td><td>Sinduadi</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sinduharjo103.png" /></td><td>Sinduharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sindumartani104.png" /></td><td>Sindumartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sitimulyo105.png" /></td><td>Sitimulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Somokaton106.png" /></td><td>Somokaton</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Srimartani107.png" /></td><td>Srimartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Srimulyo108.png" /></td><td>Srimulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sudimoro109.png" /></td><td>Sudimoro</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sukoharjo110.png" /></td><td>Sukoharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sumberadi111.png" /></td><td>Sumberadi</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sumberagung112.png" /></td><td>Sumberagung</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sumberarum113.png" /></td><td>Sumberarum</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sumberharjo114.png" /></td><td>Sumberharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sumberrahayu115.png" /></td><td>Sumberrahayu</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sumberrejo116.png" /></td><td>Sumberrejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Sumbersari117.png" /></td><td>Sumbersari</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tamanmartani118.png" /></td><td>Tamanmartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tamantirto119.png" /></td><td>Tamantirto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tambakrejo120.png" /></td><td>Tambakrejo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Taskombang121.png" /></td><td>Taskombang</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tegaltirto122.png" /></td><td>Tegaltirto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Terban123.png" /></td><td>Terban</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tirtoadi124.png" /></td><td>Tirtoadi</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tirtomartani125.png" /></td><td>Tirtomartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tlogo126.png" /></td><td>Tlogo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tlogoadi127.png" /></td><td>Tlogoadi</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Tridadi128.png" /></td><td>Tridadi</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Trihanggo129.png" /></td><td>Trihanggo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Triharjo130.png" /></td><td>Triharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Trimulyo131.png" /></td><td>Trimulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Umbulharjo132.png" /></td><td>Umbulharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Umbulmartani133.png" /></td><td>Umbulmartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Wedomartani134.png" /></td><td>Wedomartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Widodomartani135.png" /></td><td>Widodomartani</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Wijimulyo136.png" /></td><td>Wijimulyo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Wonokerto137.png" /></td><td>Wonokerto</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Wukirharjo138.png" /></td><td>Wukirharjo</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_Wukirsari139.png" /></td><td>Wukirsari</td></tr><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIDESA_AR_25K_2_140.png" /></td><td></td></tr></table>', layer: layer_ADMINISTRASIDESA_AR_25K_2},
+            {label: "Google Satellite", layer: layer_GoogleSatellite_1},
+            {label: "OSM Standard", layer: layer_OSMStandard_0},]
+        var lay = L.control.layers.tree(null, overlaysTree,{
+            //namedToggle: true,
+            //selectorBack: false,
+            //closedSymbol: '&#8862; &#x1f5c0;',
+            //openedSymbol: '&#8863; &#x1f5c1;',
+            //collapseAll: 'Collapse all',
+            //expandAll: 'Expand all',
+            collapsed: false, 
+        });
+        lay.addTo(map);
+		document.addEventListener("DOMContentLoaded", function() {
+            // set new Layers List height which considers toggle icon
+            function newLayersListHeight() {
+                var layerScrollbarElement = document.querySelector('.leaflet-control-layers-scrollbar');
+                if (layerScrollbarElement) {
+                    var layersListElement = document.querySelector('.leaflet-control-layers-list');
+                    var originalHeight = layersListElement.style.height 
+                        || window.getComputedStyle(layersListElement).height;
+                    var newHeight = parseFloat(originalHeight) - 50;
+                    layersListElement.style.height = newHeight + 'px';
+                }
+            }
+            var isLayersListExpanded = true;
+            var controlLayersElement = document.querySelector('.leaflet-control-layers');
+            var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
+            // toggle Collapsed/Expanded and apply new Layers List height
+            toggleLayerControl.addEventListener('click', function() {
+                if (isLayersListExpanded) {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                } else {
+                    controlLayersElement.classList.add('leaflet-control-layers-expanded');
+                }
+                isLayersListExpanded = !isLayersListExpanded;
+                newLayersListHeight()
+            });	
+			// apply new Layers List height if toggle layerstree
+			if (controlLayersElement) {
+				controlLayersElement.addEventListener('click', function(event) {
+					var toggleLayerHeaderPointer = event.target.closest('.leaflet-layerstree-header-pointer span');
+					if (toggleLayerHeaderPointer) {
+						newLayersListHeight();
+					}
+				});
+			}
+            // Collapsed/Expanded at Start to apply new height
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            // Collapsed touch/small screen
+            var isSmallScreen = window.innerWidth < 650;
+            if (isSmallScreen) {
+                setTimeout(function() {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                    isLayersListExpanded = !isLayersListExpanded;
+                }, 500);
+            }  
+        });       
+        setBounds();
+        var i = 0;
+        layer_Radius_Pemantauan_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Suhu'] !== null?String('<div style="color: #e3dddd; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Suhu']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Radius_Pemantauan_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: cluster_Titik_Pemantauan_UTM_4,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'NAMOBJ'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_Radius_Pemantauan_3]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Radius_Pemantauan_3]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Radius_Pemantauan_3]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Radius_Pemantauan_3]);
+        });
+    </script>
+</body>
+</html>

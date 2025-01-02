@@ -1,0 +1,67 @@
+:root {
+    /* color */
+    --blue_gray_800: #322f4f;
+    --blue_gray_800_01: #312f4e;
+    --gray_100: #f5efff;
+    --gray_50_3f: #fffafa3f;
+    --gray_600_00: #88848400;
+    --gray_700: #5b5656;
+    --gray_900: #191825;
+    --gray_900_01: #221f1f;
+    --gray_900_ec: #292828ec;
+    --white_a700: #ffffff;
+    --white_a700_7f: #ffffff7f;
+    
+    /* shadow */
+    --shadow-xs: 0 4px 4px 0 #ffffff7f;
+
+    /* border radius */
+    --radius-xs: 10px;
+    --radius-sm: 20px;
+    --radius-md: 28px;
+
+    /* spacing */
+    --space-xs: 2px;
+    --space-sm: 14px;
+    --space-md: 18px;
+    --space-lg: 20px;
+    --space-xl: 24px;
+    --space-2x1: 28px;
+    --space-3x1: 32px;
+    --space-4x1: 38px;
+    --space-5x1: 50px;
+    --space-6x1: 84px;
+    --space-7x1: 94px;
+}
+
+/* common CSS */
+.header {
+    gap: var(--space-3x1);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px 25px 10px 0px;
+    position: relative; /* Dibutuhkan untuk elemen pseudo */
+}
+
+.header a, .header p {
+    position: relative; /* Dibutuhkan untuk pseudo-element */
+    text-decoration: none; /* Hilangkan underline default (jika ada) */
+    color: var(--primary-color, #000); /* Warna teks */
+}
+
+.header a::after, .header p::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Garis di bawah teks */
+    left: 0;
+    height: 2px; /* Ketebalan garis */
+    width: 0%; /* Awalnya tersembunyi */
+    background-color: var(--primary-color, #000); /* Warna garis */
+    transition: width 0.3s ease; /* Animasi saat hover */
+}
+
+.header a:hover::after, .header p:hover::after {
+    width: 100%; /* Garis melebar seukuran teks */
+}

@@ -1,0 +1,142 @@
+.ui.button.round{
+    border-radius: var(--radius-xs);
+}
+
+.ui.button.size-sm {
+    height: 60px;
+    padding-left: 34px;
+    padding-right: 34px;
+    font-size: 20px;
+    background-color: #007bff; /* Warna default tombol */
+    color: #fff; /* Warna teks */
+    border: none; /* Hilangkan border */
+    border-radius: 8px; /* Opsional: membuat sudut tombol melengkung */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animasi transisi */
+}
+
+.ui.button.size-sm:hover {
+    transform: translateY(-3px); /* Geser tombol ke atas */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+    background-color: #0056b3; /* Opsional: ubah warna latar tombol saat hover */
+}
+
+.ui.button.size-xs{
+    height: 62px;
+    padding-left: 34px;
+    padding-right: 34px;
+    font-size: 20px;
+    width: 49%;
+}
+
+.ui.button.fill.blue_gray_800_01{
+    background-color: var(--blue_gray_800_01);
+    box-shadow: var(--shadow-xs);
+    color: var(--white_a700);
+}
+
+.ui.button.fill.gray_700{
+    background-color: var(--gray_700);
+    color: var(--white_a700);
+}
+
+.ui.button{
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    color: var(--white_a700);
+}
+
+.ui.heading.size-textxs{
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.ui.heading.size-textxs{
+    font-size: 24px;
+    font-weight: 500;
+    @media only screen and (max-width: 1050px) {
+        font-size: 22px;
+    }
+}
+
+.ui.heading.size.headingxs{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.ui.heading.size.headings{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ui.heading.size.headingmd{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.ui.heading.size.headinglg{
+    font-size: 29px;
+    font-weight: 600;
+    @media only screen and (max-width: 1050px) {
+        font-size: 27px;
+    }
+
+    @media only screen and (max-width: 550px) {
+        font-size: 25px;
+    }
+}
+
+.ui-heading-size-headingx1{
+    font-size: 35px;
+    font-weight: 900;
+    @media only screen and (max-width: 1050px) {
+        font-size: 33px;
+    }
+
+    @media only screen and (max-width: 550px) {
+        font-size: 31px;
+    }
+}
+
+.ui.heading.size.heading2x1{
+    font-size: 40px;
+    font-weight: 600;
+    @media only screen and (max-width: 1050px) {
+        font-size: 38px;
+    }
+
+    @media only screen and (max-width: 550px) {
+        font-size: 36px;
+    }
+}
+
+.ui.heading.size.heading3x1{
+    font-size: 80px;
+    font-weight: 900;
+    @media only screen and (max-width: 1050px) {
+        font-size: 48px;
+    }
+}
+
+.ui.heading{
+    color: var(--white_a700);
+    font-family: Roboto;
+}
+
+.container-xs{
+    max-width: 1342px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.weather-monitoring-dashboard_button-row {
+    display: flex;
+    gap: 16px; /* Jarak antar tombol, sesuaikan dengan kebutuhan */
+    justify-content: space-between; /* Mengatur jarak antar tombol */
+    align-items: center; /* Menyelaraskan tombol secara vertikal */
+}

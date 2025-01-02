@@ -1,0 +1,28 @@
+@font-face {
+    font-family: swap;
+    font-style: normal;
+    src: url("../webfonts/Roboto-Medium.ttf");
+    font-family: "Roboto";
+    font-weight: 500;
+}
+@font-face {
+    font-family: swap;
+    font-style: normal;
+    src: url("../webfonts/RobotoCondensed-BlackItalic.ttf");
+    font-family: "Roboto";
+    font-weight: 900;
+}
+@font-face {
+    font-family: swap;
+    font-style: normal;
+    src: url("../webfonts/RobotoCondensed-MediumItalic.ttf");
+    font-family: "Roboto";
+    font-weight: 500;
+}
+@font-face {
+    font-family: swap;
+    font-style: normal;
+    src: url("../webfonts/Roboto-Regular.ttf");
+    font-family: "Roboto";
+    font-weight: 400;
+}
