@@ -1,3 +1,116 @@
+var suhu_dht22_titik1 = "";
+var suhu_dht22_titik2 = "";
+var suhu_dht22_titik3 = "";
+var suhu_dht22_titik4 = "";
+var suhu_dht22_titik5 = "";
+var suhu_dht22_titik6 = "";
+var suhu_dht22_titik7 = "";
+
+var kelembaban_dht22_titik1 = "...";
+var kelembaban_dht22_titik2 = "...";
+var kelembaban_dht22_titik3 = "...";
+var kelembaban_dht22_titik4 = "...";
+var kelembaban_dht22_titik5 = "...";
+var kelembaban_dht22_titik6 = "...";
+var kelembaban_dht22_titik7 = "...";
+
+function fetchData() {
+  var apiUrl =
+    "https://api.thingspeak.com/channels/2799236/feeds/last.json?timezone=Asia%2FJakarta&api_key=MHM4KUDJL89HL1VD";
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Response JSON:", data);
+
+      suhu_dht22_titik1 = parseFloat(data.field4).toFixed(2);
+      kelembaban_dht22_titik1 = parseFloat(data.field3).toFixed(2);
+
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+  var apiUrl2 =
+    "https://api.thingspeak.com/channels/2799238/feeds/last.json?timezone=Asia%2FJakarta&api_key=EF0MSMXOCUFX6CQQ";
+
+  fetch(apiUrl2)
+    .then((response2) => response2.json())
+    .then((data2) => {
+      console.log("Response JSON:", data2);
+
+      suhu_dht22_titik2 = parseFloat(data2.field4).toFixed(2);
+      kelembaban_dht22_titik2 = parseFloat(data2.field3).toFixed(2);
+
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+  var apiUrl3 =
+    "https://api.thingspeak.com/channels/2799243/feeds/last.json?timezone=Asia%2FJakarta&api_key=6NO96ERJD5YGSU9O";
+
+  fetch(apiUrl3)
+    .then((response3) => response3.json())
+    .then((data3) => {
+      console.log("Response JSON:", data3);
+
+      suhu_dht22_titik3 = parseFloat(data3.field4).toFixed(2);
+      kelembaban_dht22_titik3 = parseFloat(data3.field3).toFixed(2);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+  var apiUrl4 =
+     "https://api.thingspeak.com/channels/2799237/feeds/last.json?timezone=Asia%2FJakarta&api_key=FT4LXEI9VS5QXJG2";
+
+  fetch(apiUrl4)
+    .then((response4) => response4.json())
+    .then((data4) => {
+      console.log("Response JSON:", data4);
+
+      suhu_dht22_titik4 = parseFloat(data4.field4).toFixed(2);
+      kelembaban_dht22_titik4 = parseFloat(data4.field3).toFixed(2);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+  var apiUrl5 =
+     "https://api.thingspeak.com/channels/2799239/feeds/last.json?timezone=Asia%2FJakarta&api_key=T8ZA66K8FGF94D4Q";
+
+  fetch(apiUrl5)
+    .then((response5) => response5.json())
+    .then((data5) => {
+      console.log("Response JSON:", data5);
+
+      suhu_dht22_titik5 = parseFloat(data5.field4).toFixed(2);
+      kelembaban_dht22_titik5 = parseFloat(data5.field3).toFixed(2);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+  var apiUrl6 =
+     "https://api.thingspeak.com/channels/2799242/feeds/last.json?timezone=Asia%2FJakarta&api_key=0EIYQ2711B98M9GK";
+
+  fetch(apiUrl6)
+    .then((response6) => response6.json())
+    .then((data6) => {
+      console.log("Response JSON:", data6);
+
+      suhu_dht22_titik6 = parseFloat(data6.field4).toFixed(2);
+      kelembaban_dht22_titik6 = parseFloat(data6.field3).toFixed(2);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+  var apiUrl7 =
+     "https://api.thingspeak.com/channels/2799244/feeds/last.json?timezone=Asia%2FJakarta&api_key=JCIS7EQ8XJQCKQ5M";
+
+  fetch(apiUrl7)
+    .then((response7) => response7.json())
+    .then((data7) => {
+      console.log("Response JSON:", data7);
+
+      suhu_dht22_titik7 = parseFloat(data7.field4).toFixed(2);
+      kelembaban_dht22_titik7 = parseFloat(data7.field3).toFixed(2);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+}
+
+setInterval(fetchData, 5000);
+
 var json_Radius_Pemantauan_3 = {
     type: "FeatureCollection",
     name: "Radius_Pemantauan_3",
@@ -9,8 +122,8 @@ var json_Radius_Pemantauan_3 = {
           NAMOBJ: "Titik 1",
           HubDist: 0.92283,
           path: "../assets/Result/Titik 1.shp",
-          Suhu: -10.0,
-          Kelembaban: 95.0,
+          Suhu: suhu_dht22_titik1,
+          Kelembaban: kelembaban_dht22_titik1,
           xcoord: 110.49294,
           ycoord: -7.81269,
           Foto: "foto1.jpg",
@@ -52,8 +165,8 @@ var json_Radius_Pemantauan_3 = {
           NAMOBJ: "Titik 2",
           HubDist: 1.2986,
           path: "../Result/Titik 2.shp",
-          Suhu: -1.0,
-          Kelembaban: 81.0,
+          Suhu: suhu_dht22_titik2,
+          Kelembaban: kelembaban_dht22_titik2,
           xcoord: 110.49525,
           ycoord: -7.78276,
           Foto: "foto2.jpg",
@@ -95,8 +208,8 @@ var json_Radius_Pemantauan_3 = {
           NAMOBJ: "Titik 3",
           HubDist: 3.22826,
           path: "../Result/Titik 3.shp",
-          Suhu: 3.0,
-          Kelembaban: 64.0,
+          Suhu: suhu_dht22_titik3,
+          Kelembaban: kelembaban_dht22_titik3,
           xcoord: 110.34649,
           ycoord: -7.76535,
           Foto: "foto3.jpg",
@@ -138,8 +251,8 @@ var json_Radius_Pemantauan_3 = {
           NAMOBJ: "Titik 4",
           HubDist: 3.82916,
           path: "../Result/Titik 4.shp",
-          Suhu: 11.34,
-          Kelembaban: 54.0,
+          Suhu: suhu_dht22_titik4,
+          Kelembaban: kelembaban_dht22_titik4,
           xcoord: 110.30963,
           ycoord: -7.76331,
           Foto: "foto4.jpg",
@@ -181,8 +294,8 @@ var json_Radius_Pemantauan_3 = {
           NAMOBJ: "Titik 5",
           HubDist: 4.08712,
           path: "../Result/Titik 5.shp",
-          Suhu: 16.2,
-          Kelembaban: 30.0,
+          Suhu: suhu_dht22_titik5,
+          Kelembaban: kelembaban_dht22_titik5,
           xcoord: 110.33717,
           ycoord: -7.77146,
           Foto: "foto5.jpg",
@@ -224,8 +337,8 @@ var json_Radius_Pemantauan_3 = {
           NAMOBJ: "Titik 6",
           HubDist: 4.40041,
           path: "../Result/Titik 6.shp",
-          Suhu: 26.1,
-          Kelembaban: 25.0,
+          Suhu: suhu_dht22_titik6,
+          Kelembaban: kelembaban_dht22_titik6,
           xcoord: 110.3191,
           ycoord: -7.75104,
           Foto: "foto6.jpg",
@@ -267,8 +380,8 @@ var json_Radius_Pemantauan_3 = {
           NAMOBJ: "Titik 7",
           HubDist: 6.04921,
           path: "../Result/Titik 7.shp",
-          Suhu: 34.24,
-          Kelembaban: 10.0,
+          Suhu: suhu_dht22_titik7,
+          Kelembaban: kelembaban_dht22_titik7,
           xcoord: 110.37428,
           ycoord: -7.61366,
           Foto: "foto7.jpg",
@@ -305,5 +418,32 @@ var json_Radius_Pemantauan_3 = {
         },
       },
     ],
-  };
+};
+
+function updateGeoJSON() {
+json_Radius_Pemantauan_3.features[0].properties.Suhu = suhu_dht22_titik1;
+json_Radius_Pemantauan_3.features[1].properties.Suhu = suhu_dht22_titik2;
+json_Radius_Pemantauan_3.features[2].properties.Suhu = suhu_dht22_titik3;
+json_Radius_Pemantauan_3.features[3].properties.Suhu = suhu_dht22_titik4;
+json_Radius_Pemantauan_3.features[4].properties.Suhu = suhu_dht22_titik5;
+json_Radius_Pemantauan_3.features[5].properties.Suhu = suhu_dht22_titik6;
+json_Radius_Pemantauan_3.features[6].properties.Suhu = suhu_dht22_titik7;
+
+json_Radius_Pemantauan_3.features[0].properties.Kelembaban = kelembaban_dht22_titik1;
+json_Radius_Pemantauan_3.features[1].properties.Kelembaban = kelembaban_dht22_titik2;
+json_Radius_Pemantauan_3.features[2].properties.Kelembaban = kelembaban_dht22_titik3;
+json_Radius_Pemantauan_3.features[3].properties.Kelembaban = kelembaban_dht22_titik4;
+json_Radius_Pemantauan_3.features[4].properties.Kelembaban = kelembaban_dht22_titik5;
+json_Radius_Pemantauan_3.features[5].properties.Kelembaban = kelembaban_dht22_titik6;
+json_Radius_Pemantauan_3.features[6].properties.Kelembaban = kelembaban_dht22_titik7;
+}
+
+function logJson() {
+updateGeoJSON();
+console.log("===============d=================");
+console.log(json_Radius_Pemantauan_3.features[0].properties.Suhu);
+console.log("===========================a=====");
+}
+
+setInterval(logJson, 5000);
   
