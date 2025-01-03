@@ -3007,15 +3007,62 @@
         map.createPane('pane_Radius_Pemantauan_3');
         map.getPane('pane_Radius_Pemantauan_3').style.zIndex = 403;
         map.getPane('pane_Radius_Pemantauan_3').style['mix-blend-mode'] = 'normal';
+        // var layer_Radius_Pemantauan_3 = new L.geoJson(json_Radius_Pemantauan_3, {
+        //     attribution: '',
+        //     interactive: true,
+        //     dataVar: 'json_Radius_Pemantauan_3',
+        //     layerName: 'layer_Radius_Pemantauan_3',
+        //     pane: 'pane_Radius_Pemantauan_3',
+        //     onEachFeature: pop_Radius_Pemantauan_3,
+        //     style: style_Radius_Pemantauan_3_0,
+        // });
+        var textMarkers = []; // Array untuk menyimpan marker teks
+
+        function addTextToFeature(feature, layer) {
+            // Menghitung titik tengah dari layer (GeoJSON feature)
+            let center = layer.getBounds().getCenter();
+            let textMarker = L.marker(center, {
+            icon: L.divIcon({
+                className: "custom-label",
+                html: `<div>${feature.properties.Suhu}°C</div>`,
+                iconSize: [50, 20],
+                iconAnchor: [25, 10],
+            }),
+            interactive: false,
+            });
+            textMarkers.push(textMarker); // Menambahkan marker ke array
+            textMarker.addTo(map); // Menambahkan marker ke peta
+        }
+
+        function removeTextMarkers() {
+            for (let marker of textMarkers) {
+            map.removeLayer(marker);
+            }
+            textMarkers = [];
+        }
+
+        function updateLayer() {
+            removeTextMarkers();
+            layer_Radius_Pemantauan_3.clearLayers();
+            updateGeoJSON();
+            layer_Radius_Pemantauan_3.addData(json_Radius_Pemantauan_3);
+        }
+
         var layer_Radius_Pemantauan_3 = new L.geoJson(json_Radius_Pemantauan_3, {
-            attribution: '',
+            attribution: "",
             interactive: true,
             dataVar: 'json_Radius_Pemantauan_3',
             layerName: 'layer_Radius_Pemantauan_3',
             pane: 'pane_Radius_Pemantauan_3',
-            onEachFeature: pop_Radius_Pemantauan_3,
+            onEachFeature: function (feature, layer) {
+            pop_Radius_Pemantauan_3(feature, layer);
+            addTextToFeature(feature, layer);
+            },
             style: style_Radius_Pemantauan_3_0,
-        });
+        }).addTo(map);
+
+        setInterval(updateLayer, 10000);
+
         bounds_group.addLayer(layer_Radius_Pemantauan_3);
         map.addLayer(layer_Radius_Pemantauan_3);
         function pop_Titik_Pemantauan_UTM_4(feature, layer) {
