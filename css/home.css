@@ -290,6 +290,9 @@
     border-radius: 10px 10px 0px 0px;
     margin: -4px -20px;
     font-size: 24px;
+    @media only screen and (max-width: 360px) {
+        font-size: 18px;
+     }
 }
 
 .contact-info p {
@@ -298,6 +301,9 @@
     text-align: left;
     display: flex;
     flex-direction: column;
+    @media only screen and (max-width: 360px) {
+        font-size: 11px;
+     }
 }
 
 .hub-button {
