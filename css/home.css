@@ -165,8 +165,9 @@
 
 .monitoring-cards {
     display: flex;
+    flex-wrap: wrap; /* Membungkus kartu ke baris berikutnya jika ruang tidak cukup */
     align-items: center;
-    height: fit-content;
+    justify-content: center; /* Pusatkan kartu secara horizontal */
     gap: 50px;
     margin-bottom: 15px;
 }
@@ -193,7 +194,7 @@
     align-items: center;
 }
 
-.card-last{
+.card-last {
     margin: 0 auto; /* Horizontally center */
 }
 
@@ -225,6 +226,21 @@
     align-self: flex-start;
 }
 
+/* Responsiveness: Tampilan satu per satu ke bawah pada lebar layar 1050px */
+@media only screen and (max-width: 1050px) {
+    .monitoring-cards {
+        flex-direction: column; /* Atur kartu dalam kolom */
+        gap: 30px; /* Jarak antar kartu */
+    }
+
+    .card {
+        max-width: 100%; /* Lebar penuh */
+    }
+
+    .stasiun-thumbnail {
+        height: auto; /* Sesuaikan tinggi thumbnail dengan proporsi konten */
+    }
+}
 
 /* Styling untuk Lokasi dan Google Maps */
 .location {
@@ -296,6 +312,9 @@
     font-weight: 600;
     margin-bottom: 10px;
     width: 80%;
+    @media only screen and (max-width: 1050px) {
+        display: none;
+    }
 }
 
 .hub-button:hover {
