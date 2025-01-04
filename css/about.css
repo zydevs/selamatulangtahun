@@ -16,6 +16,8 @@
     margin-left: 93px;
     @media only screen and (max-width: 1050px) {
         height: auto;
+        width: 100%;
+        margin: 0;
     }
 }
 
@@ -26,6 +28,9 @@
     margin-left: 100px;
     @media only screen and (max-width: 1050px) {
         height: auto;
+        width: 100%;
+        margin: 0;
+        margin-top: 80px;
     }
 }
 
@@ -36,6 +41,8 @@
     margin-left: 151px;
     @media only screen and (max-width: 1050px) {
         height: auto;
+        width: 100%;
+        margin: 0;
     }
 }
 
@@ -78,6 +85,7 @@
     margin-left: 54px;
     @media only screen and (max-width: 1050px) {
         margin-left: 0px;
+        
     }
 }
 
@@ -136,7 +144,7 @@
     width: 100%;
     flex-direction: column;
     @media only screen and (max-width: 1050px) {
-        width: 100px;
+        width: 230px;
     }
 }
 

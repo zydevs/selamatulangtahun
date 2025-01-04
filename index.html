@@ -95,11 +95,11 @@
                   alt="ESP32"
                   class="stasiun-thumbnail"
                 />
-                <h3>Titik 1: <span id="residental1"></span></h3>
+                <h3>Titik 1: <span>Jalan Jlatren - Pereng</span></h3>
                 <div class="point-contents">
                   <div class="point-coordinate">
-                    <p>Latitide: <span id="lat1"></span></p>
-                    <p>Longitude: <span id="long1"></span></p>
+                    <p>Latitide: <span>-7.812688270892327</span></p>
+                    <p>Longitude: <span>110.492942381435157 </span></p>
                   </div>
                   <a class="gotomaps" target="_blank" href="#" id="go-to-maps1"
                     >🗺️</a
@@ -112,11 +112,11 @@
                   alt="ESP32"
                   class="stasiun-thumbnail"
                 />
-                <h3>Titik 2: <span id="residental2"></span></h3>
+                <h3>Titik 2: <span>Jalan ke arah Wonosari</span></h3>
                 <div class="point-contents">
                   <div class="point-coordinate">
-                    <p>Latitide: <span id="lat2"></span></p>
-                    <p>Longitude: <span id="long2"></span></p>
+                    <p>Latitide: <span>-7.78280000</span></p>
+                    <p>Longitude: <span>110.49528333</span></p>
                   </div>
                   <a class="gotomaps" target="_blank" href="#" id="go-to-maps2"
                     >🗺️</a
@@ -129,11 +129,11 @@
                   alt="ESP32"
                   class="stasiun-thumbnail"
                 />
-                <h3>Titik 3: <span id="residental3"></span></h3>
+                <h3>Titik 3: <span>Jalan Dewadaru, Trihanggo</span></h3>
                 <div class="point-contents">
                   <div class="point-coordinate">
-                    <p>Latitide: <span id="lat3"></span></p>
-                    <p>Longitude: <span id="long3"></span></p>
+                    <p>Latitide: <span>-7.765348405035815</span></p>
+                    <p>Longitude: <span>110.346487556103611</span></p>
                   </div>
                   <a class="gotomaps" target="_blank" href="#" id="go-to-maps3"
                     >🗺️</a
@@ -152,8 +152,8 @@
                 <h3>Titik 4: <span>Margoluwih, Seyegan, Sleman</span></h3>
                 <div class="point-contents">
                   <div class="point-coordinate">
-                    <p>Latitide: <span id="lat4"></span></p>
-                    <p>Longitude: <span id="long4"></span></p>
+                    <p>Latitide: <span>-7.763307756192961</span></p>
+                    <p>Longitude: <span>110.309625335064950</span></p>
                   </div>
                   <a class="gotomaps" target="_blank" href="#" id="go-to-maps4"
                     >🗺️</a
@@ -169,8 +169,8 @@
                 <h3>Titik 5: <span>Nogotirto, Gamping, Sleman</span></h3>
                 <div class="point-contents">
                   <div class="point-coordinate">
-                    <p>Latitide: <span id="lat5"></span></p>
-                    <p>Longitude: <span id="long5"></span></p>
+                    <p>Latitide: <span>-7.771455768627910</span></p>
+                    <p>Longitude: <span>110.337173243079192</span></p>
                   </div>
                   <a class="gotomaps" target="_blank" href="#" id="go-to-maps5"
                     >🗺️</a
@@ -186,8 +186,8 @@
                 <h3>Titik 6: <span>Sidomoyo, Godean, Sleman</span></h3>
                 <div class="point-contents">
                   <div class="point-coordinate">
-                    <p>Latitide: <span id="lat6"></span></p>
-                    <p>Longitude: <span id="long6"></span></p>
+                    <p>Latitide: <span>-7.751039890884934</span></p>
+                    <p>Longitude: <span>110.319104752149812</span></p>
                   </div>
                   <a class="gotomaps" target="_blank" href="#" id="go-to-maps6"
                     >🗺️</a
@@ -206,8 +206,8 @@
                 <h3>Titik 7: <span>Sempu, Tlatar, Wono Kerto</span></h3>
                 <div class="point-contents">
                   <div class="point-coordinate">
-                    <p>Latitide: <span id="lat7"></span></p>
-                    <p>Longitude: <span id="long7"></span></p>
+                    <p>Latitide: <span>-7.613659850325057</span></p>
+                    <p>Longitude: <span>110.374281357881941</span></p>
                   </div>
                   <a class="gotomaps" target="_blank" href="#" id="go-to-maps2"
                     >🗺️</a
@@ -360,7 +360,7 @@
             .then((response4) => response4.json())
             .then((dataLoc4) => {
                 document.getElementById("residental4").innerText =
-                dataLoc4.address.road;
+                dataLoc4.address.subdistrict;
                 console.log(dataLoc);
                 document.getElementById("lat4").innerText = dataLoc4.lat;
                 document.getElementById("long4").innerText = dataLoc4.lon;
