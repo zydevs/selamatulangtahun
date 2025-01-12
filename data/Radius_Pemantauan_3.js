@@ -126,7 +126,7 @@ var json_Radius_Pemantauan_3 = {
           Kelembaban: kelembaban_dht22_titik1,
           xcoord: 110.49294,
           ycoord: -7.81269,
-          Foto: "foto1.jpg",
+          Foto: "titik1.jpg",
         },
         geometry: {
           type: "MultiPolygon",
@@ -169,7 +169,7 @@ var json_Radius_Pemantauan_3 = {
           Kelembaban: kelembaban_dht22_titik2,
           xcoord: 110.49525,
           ycoord: -7.78276,
-          Foto: "foto2.jpg",
+          Foto: "titik2.jpg",
         },
         geometry: {
           type: "MultiPolygon",
@@ -212,7 +212,7 @@ var json_Radius_Pemantauan_3 = {
           Kelembaban: kelembaban_dht22_titik3,
           xcoord: 110.34649,
           ycoord: -7.76535,
-          Foto: "foto3.jpg",
+          Foto: "titik3.jpg",
         },
         geometry: {
           type: "MultiPolygon",
@@ -255,7 +255,7 @@ var json_Radius_Pemantauan_3 = {
           Kelembaban: kelembaban_dht22_titik4,
           xcoord: 110.30963,
           ycoord: -7.76331,
-          Foto: "foto4.jpg",
+          Foto: "titik4.jpg",
         },
         geometry: {
           type: "MultiPolygon",
@@ -298,7 +298,7 @@ var json_Radius_Pemantauan_3 = {
           Kelembaban: kelembaban_dht22_titik5,
           xcoord: 110.33717,
           ycoord: -7.77146,
-          Foto: "foto5.jpg",
+          Foto: "titik5.jpg",
         },
         geometry: {
           type: "MultiPolygon",
@@ -341,7 +341,7 @@ var json_Radius_Pemantauan_3 = {
           Kelembaban: kelembaban_dht22_titik6,
           xcoord: 110.3191,
           ycoord: -7.75104,
-          Foto: "foto6.jpg",
+          Foto: "titik6.jpg",
         },
         geometry: {
           type: "MultiPolygon",
@@ -384,7 +384,7 @@ var json_Radius_Pemantauan_3 = {
           Kelembaban: kelembaban_dht22_titik7,
           xcoord: 110.37428,
           ycoord: -7.61366,
-          Foto: "foto7.jpg",
+          Foto: "titik7.jpg",
         },
         geometry: {
           type: "MultiPolygon",
