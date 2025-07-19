@@ -1,452 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
+
+    <meta name="author" content="Hafizi">
     <meta charset="UTF-8">
-    <title>Home - Explore Climate Monitoring Sleman</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Web GIS Monitoring Suhu & Kelembaban Kabupaten Sleman, DIY">
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
-    <link rel="stylesheet" type="text/css" href="./css/font.css">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css">
-    <link rel="stylesheet" type="text/css" href="./css/components.css">
-    <link rel="stylesheet" type="text/css" href="./css/home.css">
-    <link rel="stylesheet" type="text/css" href="./css/animation.css">
+    <link rel="shortcut icon" type="image/png" href="./asset/icon/favicon-birthday-cake.png" />
+    <script src="https://kit.fontawesome.com/a6c3fb960a.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <script type="text/javascript" src="cieultah.js"></script>
+
+    <title>Cie Ultah</title>
 </head>
+
 <body>
-    <!-- main content section -->
-    <div class="home">
-        <!-- header -->
-        <div class="home-1 container-xs">
-            <div class="home_column">
-                <!-- navbar -->
-                <header class="header">
-                    <a href="./index.html">
-                        <p class="ui heading size-texts">Home</p>
-                    </a>
-                    <a href="./maps.html" class="">
-                        <p class="ui heading size-texts">Maps</p>
-                    </a>
-                    <a href="./about.html" class="">
-                        <p class="ui heading size-texts">About Us</p>
-                    </a>
-                </header>
-                <!-- title -->
-                <div class="home_content">
-                    <div class="home_title">
-                        <h1 class="home_title-text ui heading size-heading3x1">Monitoring Suhu & Kelembaban</h1>
-                        <h2 class="home_subtitle-text ui heading size-headingx1">
-                            Kabupaten Sleman, Daerah Istimewa Yogyakarta, Indonesia.
-                        </h2>
-                    </div>
-                    <!-- button -->
-                    <a href="./maps.html">
-                        <button class="home_button ui button blue_gray_800_01 size-sm fill">
-                             Lihat Peta
-                        </button>
-                    </a>
+
+    <div class="letter-container">
+
+        <div class="tap-hint">Tekan Surat dibawah!</div>
+
+        <div class="letter" onclick="openLetter()">
+            <img src="./asset/letter-close4.svg" class="arrow-down-closed">
+            <div class="arrow-down"></div>
+            <img src="./asset/letter-open3.svg" class="arrow-up-open">
+            <div class="arrow-up"></div>
+
+            <div class="arrow-left"></div>
+
+            <div class="arrow-right"></div>
+        </div>
+    </div>         <audio id="audio" src="./asset/music/selamatulangtahun-song.mp3"></audio>
+
+    <div class="flip-card">
+        <div class="flip-card-inner" id="flipCardInner">
+            <div class="message-box-1 flip-card-front" onclick="flipCard()">
+                <div class="message-box-image">
+                    <img src="./asset/img/anisah.png" alt="Anisah" class="anisah-photo">
                 </div>
+                <div class="flip-hint" id="flipHintFront">Klik Foto!</div>
+            </div>
+
+            <div class="message-box-2 flip-card-back" onclick="flipCard()">
+                <div class="message-box-greeting">
+                    <p> Happy Birthday <br> Anisah Juliyana!! <br> Cieee udah 21 tahun nih, Wish you all the best!! Semangat KKN nya sayangggg! <br> Sehat-sehat yaa di Cianjur, sampai ketemu bulan depan :) <br> Sorry cuma bisa ngasih ginian</p>
+                </div>
+                <div class="flip-hint" id="flipHintBack">Klik untuk Kembali!</div>
             </div>
         </div>
     </div>
 
-    <main>
-        <section class="sensors">
-            <h2>Sensor yang Digunakan</h2>
-            <div class="sensor-list">
-              <div class="sensor-item">
-                <img
-                  src="https://tokoteknologi.co.id/resources/image/18/c1/f.jpg"
-                  alt="DHT22"
-                  class="sensor-icon"
-                />
-                <h3>DHT22</h3>
-                <p>Sensor untuk memantau suhu dan kelembaban secara akurat.</p>
-              </div>
-              <div class="sensor-item">
-                <img
-                  src="https://tokoteknologi.co.id/resources/image/18/bf/6.jpg"
-                  alt="GPS NEO 6M"
-                  class="sensor-icon"
-                />
-                <h3>GPS NEO 6M</h3>
-                <p>Sensor GPS untuk menentukan lokasi dengan presisi tinggi.</p>
-              </div>
-              <div class="sensor-item">
-                <img
-                  src="https://raharja.ac.id/wp-content/uploads/2021/11/ESP32-Module.png"
-                  alt="ESP32"
-                  class="sensor-icon"
-                />
-                <h3>ESP32</h3>
-                <p>Microcontroller untuk pengelolaan data dan komunikasi IoT.</p>
-              </div>
-            </div>
-        </section>
-  
-        <!-- Section Titik Pemantauan -->
-        <section class="monitoring-points">
-            <h2>Titik Pemantauan</h2>
-            
-            <div class="monitoring-cards">
-              <div class="card">
-                <img
-                  src="images/titik1.jpg"
-                  alt="ESP32"
-                  class="stasiun-thumbnail"
-                />
-                <h3>Titik 1: <span>Jalan Jlatren - Pereng</span></h3>
-                <div class="point-contents">
-                  <div class="point-coordinate">
-                    <p>Latitide: <span>-7.812688270892327</span></p>
-                    <p>Longitude: <span>110.492942381435157 </span></p>
-                  </div>
-                  <a class="gotomaps" target="_blank" href="#" id="go-to-maps1"
-                    >🗺️</a
-                  >
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="images/titik2.jpg"
-                  alt="ESP32"
-                  class="stasiun-thumbnail"
-                />
-                <h3>Titik 2: <span>Jalan ke arah Wonosari</span></h3>
-                <div class="point-contents">
-                  <div class="point-coordinate">
-                    <p>Latitide: <span>-7.78280000</span></p>
-                    <p>Longitude: <span>110.49528333</span></p>
-                  </div>
-                  <a class="gotomaps" target="_blank" href="#" id="go-to-maps2"
-                    >🗺️</a
-                  >
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="images/titik3.jpg"
-                  alt="ESP32"
-                  class="stasiun-thumbnail"
-                />
-                <h3>Titik 3: <span>Jalan Dewadaru, Trihanggo</span></h3>
-                <div class="point-contents">
-                  <div class="point-coordinate">
-                    <p>Latitide: <span>-7.765348405035815</span></p>
-                    <p>Longitude: <span>110.346487556103611</span></p>
-                  </div>
-                  <a class="gotomaps" target="_blank" href="#" id="go-to-maps3"
-                    >🗺️</a
-                  >
-                </div>
-              </div>
-            </div>
+    <div class="media-btn" onclick="mediaBtn()">
 
-            <div class="monitoring-cards">
-              <div class="card">
-                <img
-                  src="images/titik4.jpg"
-                  alt="ESP32"
-                  class="stasiun-thumbnail"
-                />
-                <h3>Titik 4: <span>Margoluwih, Seyegan, Sleman</span></h3>
-                <div class="point-contents">
-                  <div class="point-coordinate">
-                    <p>Latitide: <span>-7.763307756192961</span></p>
-                    <p>Longitude: <span>110.309625335064950</span></p>
-                  </div>
-                  <a class="gotomaps" target="_blank" href="#" id="go-to-maps4"
-                    >🗺️</a
-                  >
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="images/titik5.jpg"
-                  alt="ESP32"
-                  class="stasiun-thumbnail"
-                />
-                <h3>Titik 5: <span>Nogotirto, Gamping, Sleman</span></h3>
-                <div class="point-contents">
-                  <div class="point-coordinate">
-                    <p>Latitide: <span>-7.771455768627910</span></p>
-                    <p>Longitude: <span>110.337173243079192</span></p>
-                  </div>
-                  <a class="gotomaps" target="_blank" href="#" id="go-to-maps5"
-                    >🗺️</a
-                  >
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="images/titik6.jpg"
-                  alt="ESP32"
-                  class="stasiun-thumbnail"
-                />
-                <h3>Titik 6: <span>Sidomoyo, Godean, Sleman</span></h3>
-                <div class="point-contents">
-                  <div class="point-coordinate">
-                    <p>Latitide: <span>-7.751039890884934</span></p>
-                    <p>Longitude: <span>110.319104752149812</span></p>
-                  </div>
-                  <a class="gotomaps" target="_blank" href="#" id="go-to-maps6"
-                    >🗺️</a
-                  >
-                </div>
-              </div>
-            </div>
+        <div class="media-button" id="media-button">
+            <i class="fas fa-pause"></i>         </div>
 
-            <div class="monitoring-cards">
-              <div class="card card-last">
-                <img
-                  src="images/titik7.jpg"
-                  alt="ESP32"
-                  class="stasiun-thumbnail"
-                />
-                <h3>Titik 7: <span>Sempu, Tlatar, Wono Kerto</span></h3>
-                <div class="point-contents">
-                  <div class="point-coordinate">
-                    <p>Latitide: <span>-7.613659850325057</span></p>
-                    <p>Longitude: <span>110.374281357881941</span></p>
-                  </div>
-                  <a class="gotomaps" target="_blank" href="#" id="go-to-maps2"
-                    >🗺️</a
-                  >
-                </div>
-              </div>
-            </div>
+    </div>
 
-        </section>
-  
-        <!-- Section Lokasi dan Google Maps -->
-        <section class="location">
-            <h2>Lokasi Kantor Pusat</h2>
-            <div class="location-content">
-              <div class="map-container">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.381716630867!2d106.80979187393912!3d-6.599393064509932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5d97d3764c3%3A0xd56ba6305181755c!2sUniversitas%20Pakuan!5e0!3m2!1sid!2sid!4v1734570592136!5m2!1sid!2sid"
-                  width="100%"
-                  height="450"
-                  style="border: 0"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
-              <div class="contact-info">
-                <div>
-                  <h3 class="text-contact">Universitas Pakuan</h3>
-                  <br>
-                  <br>
-                  <br>
-                  <p>
-                    <strong>Alamat:</strong>Jl. Pakuan, RT.02/RW.06, Tegallega,
-                    Kecamatan Bogor Tengah, Kota Bogor, Jawa Barat 16129
-                  </p>
-                  <p><strong>Email:</strong>rektorat@unpak.ac.id</p>
-                  <p><strong>Telepon:</strong> +62-811-1234-5678</p>
-                </div>
-  
-                <div>
-                  <a
-                    class="hub-button"
-                    target="_blank"
-                    href="mailto:rektorat@unpak.ac.id?subject=Tanya%20Stasium%20Pemantauan&body=Halo%20saya%20<Nama%20Anda>,%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20<deskripsikan%20pertanyaan%20anda>"
-                    >Hubungi via Email</a
-                  >
-                  <br />
-                  <a
-                    class="hub-button"
-                    target="_blank"
-                    href="https://wa.me/628551111980?text=Halo%20saya%20<Nama%20Anda>,%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20<deskripsikan%20pertanyaan%20anda>"
-                    >Hubungi via Whatsapp</a
-                  >
-                </div>
-              </div>
-            </div>
-        </section>
-  
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2025 Monitoring Suhu dan Kelembaban | Kabupaten Sleman, DIY</p>
-            <p>Dibuat untuk memenuhi Tugas Akhir Praktikum Mata Kuliah Sistem Informasi Geografis</p>
-        </footer>
-    </main>
-
-    <script>
-        function fetchData() {
-        // titik 1
-        var apiUrl =
-        "https://api.thingspeak.com/channels/2799236/feeds/last.json?timezone=Asia%2FJakarta&api_key=MHM4KUDJL89HL1VD";
-
-        fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${data.field1}&lon=${data.field2}&format=json`
-            )
-            .then((response) => response.json())
-            .then((dataLoc) => {
-                document.getElementById("residental1").innerText =
-                dataLoc.address.road;
-                console.log(dataLoc);
-                document.getElementById("lat1").innerText = dataLoc.lat;
-                document.getElementById("long1").innerText = dataLoc.lon;
-                document.getElementById(
-                "go-to-maps1"
-                ).href = `https://www.google.com/maps?q=${dataLoc.lat},${dataLoc.lon}`;
-            });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-
-        // titik 2
-        var apiUrl2 =
-        "https://api.thingspeak.com/channels/2799238/feeds/last.json?timezone=Asia%2FJakarta&api_key=EF0MSMXOCUFX6CQQ";
-
-        fetch(apiUrl2)
-        .then((response2) => response2.json())
-        .then((data2) => {
-            fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${data2.field1}&lon=${data2.field2}&format=json`
-            )
-            .then((response2) => response2.json())
-            .then((dataLoc2) => {
-                document.getElementById("residental2").innerText =
-                dataLoc2.address.road;
-                console.log(dataLoc);
-                document.getElementById("lat2").innerText = dataLoc2.lat;
-                document.getElementById("long2").innerText = dataLoc2.lon;
-                document.getElementById(
-                "go-to-maps2"
-                ).href = `https://www.google.com/maps?q=${dataLoc2.lat},${dataLoc2.lon}`;
-            });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-
-        // titik 3
-        var apiUrl3 =
-        "https://api.thingspeak.com/channels/2799243/feeds/last.json?timezone=Asia%2FJakarta&api_key=6NO96ERJD5YGSU9O";
-
-        fetch(apiUrl3)
-        .then((response3) => response3.json())
-        .then((data3) => {
-            fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${data3.field1}&lon=${data3.field2}&format=json`
-            )
-            .then((response3) => response3.json())
-            .then((dataLoc3) => {
-                document.getElementById("residental3").innerText =
-                dataLoc3.address.road;
-                console.log(dataLoc);
-                document.getElementById("lat3").innerText = dataLoc3.lat;
-                document.getElementById("long3").innerText = dataLoc3.lon;
-                document.getElementById(
-                "go-to-maps3"
-                ).href = `https://www.google.com/maps?q=${dataLoc3.lat},${dataLoc3.lon}`;
-            });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-
-        // titik 4
-        var apiUrl4 =
-        "https://api.thingspeak.com/channels/2799237/feeds/last.json?timezone=Asia%2FJakarta&api_key=FT4LXEI9VS5QXJG2";
-
-        fetch(apiUrl4)
-        .then((response4) => response4.json())
-        .then((data4) => {
-            fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${data4.field1}&lon=${data4.field2}&format=json`
-            )
-            .then((response4) => response4.json())
-            .then((dataLoc4) => {
-                document.getElementById("residental4").innerText =
-                dataLoc4.address.subdistrict;
-                console.log(dataLoc);
-                document.getElementById("lat4").innerText = dataLoc4.lat;
-                document.getElementById("long4").innerText = dataLoc4.lon;
-                document.getElementById(
-                "go-to-maps4"
-                ).href = `https://www.google.com/maps?q=${dataLoc4.lat},${dataLoc4.lon}`;
-            });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-
-        // titik 5
-        var apiUrl5 =
-        "https://api.thingspeak.com/channels/2799239/feeds/last.json?timezone=Asia%2FJakarta&api_key=T8ZA66K8FGF94D4Q";
-
-        fetch(apiUrl5)
-        .then((response5) => response5.json())
-        .then((data5) => {
-            fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${data5.field1}&lon=${data5.field2}&format=json`
-            )
-            .then((response5) => response5.json())
-            .then((dataLoc5) => {
-                document.getElementById("residental5").innerText =
-                dataLoc5.address.road;
-                console.log(dataLoc);
-                document.getElementById("lat5").innerText = dataLoc5.lat;
-                document.getElementById("long5").innerText = dataLoc5.lon;
-                document.getElementById(
-                "go-to-maps5"
-                ).href = `https://www.google.com/maps?q=${dataLoc5.lat},${dataLoc5.lon}`;
-            });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-
-        // titik 6
-        var apiUrl6 =
-        "https://api.thingspeak.com/channels/2799242/feeds/last.json?timezone=Asia%2FJakarta&api_key=0EIYQ2711B98M9GK";
-
-        fetch(apiUrl6)
-        .then((response6) => response6.json())
-        .then((data6) => {
-            fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${data6.field1}&lon=${data6.field2}&format=json`
-            )
-            .then((response6) => response6.json())
-            .then((dataLoc6) => {
-                document.getElementById("residental6").innerText =
-                dataLoc6.address.road;
-                console.log(dataLoc);
-                document.getElementById("lat6").innerText = dataLoc6.lat;
-                document.getElementById("long6").innerText = dataLoc6.lon;
-                document.getElementById(
-                "go-to-maps6"
-                ).href = `https://www.google.com/maps?q=${dataLoc6.lat},${dataLoc6.lon}`;
-            });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-
-        // titik 7
-        var apiUrl7 =
-        "https://api.thingspeak.com/channels/2799244/feeds/last.json?timezone=Asia%2FJakarta&api_key=JCIS7EQ8XJQCKQ5M";
-
-        fetch(apiUrl7)
-        .then((response7) => response7.json())
-        .then((data7) => {
-            fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${data7.field1}&lon=${data7.field2}&format=json`
-            )
-            .then((response7) => response7.json())
-            .then((dataLoc7) => {
-                document.getElementById("residental7").innerText =
-                dataLoc7.address.road;
-                console.log(dataLoc);
-                document.getElementById("lat7").innerText = dataLoc7.lat;
-                document.getElementById("long7").innerText = dataLoc7.lon;
-                document.getElementById(
-                "go-to-maps7"
-                ).href = `https://www.google.com/maps?q=${dataLoc7.lat},${dataLoc7.lon}`;
-            });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    }
-
-    fetchData();
-
-    console.log("Data fetched for point 4:", data4);
-    </script>
+    <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js" type="text/javascript"></script>
 </body>
+
 </html>

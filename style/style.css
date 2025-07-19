@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap");
+
+/* Reset CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Penting untuk model kotak yang konsisten */
+}
+
+body {
+    background-image: linear-gradient(#0725b7, #6381f3);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    /* Menggunakan flexbox untuk tata letak */
+    flex-direction: column;
+    /* Mengatur item dalam kolom vertikal */
+    align-items: center;
+    /* Pusatkan item secara horizontal */
+    min-height: 100vh;
+    /* Memastikan body mengambil tinggi penuh viewport */
+    justify-content: flex-start;
+    /* Memulai konten dari atas */
+    padding-top: 50px;
+    /* Memberi sedikit ruang di atas */
+}
+
+.tap-hint {
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    /* Menyesuaikan margin */
+    animation: fadeInOut 2s infinite;
+    /* Menyesuaikan margin-top */
+    z-index: 1;
+    /* Pastikan di bawah letter */
+}
+
+@keyframes fadeInOut {
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.letter-container {
+    position: relative;
+    text-align: center;
+}
+
+.letter {
+    position: relative;
+    /* Tetap relatif seperti yang Anda inginkan */
+    margin-top: 100px;
+    /* Memposisikan letter setelah tap-hint */
+    width: 300px;
+    height: 200px;
+    z-index: 2;
+    /* Letter akan berada di atas tap-hint */
+    background: white;
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.1);
+    transition: 1s;
+    animation: shake 1s infinite;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: rotate(0deg);
+        /* Transform relatif terhadap posisi letter */
+    }
+    25% {
+        transform: rotate(1deg);
+    }
+    75% {
+        transform: rotate(-1deg);
+    }
+}
+
+
+/* Image dan div untuk efek amplop */
+
+.letter .arrow-down-closed {
+    width: 100%;
+    /* Mengisi penuh lebar letter */
+    height: 125px;
+    position: absolute;
+    z-index: 5;
+    transition: 0.5s;
+    left: 0;
+    /* Posisi relatif terhadap .letter */
+    top: 0;
+}
+
+.letter .arrow-up-open {
+    width: 100%;
+    /* Mengisi penuh lebar letter */
+    height: 125px;
+    position: absolute;
+    z-index: 9;
+    top: -125px;
+    /* Pindah ke atas agar terlihat seperti terbuka */
+    left: 0;
+    transition: 0.5s 0.5s;
+    visibility: hidden;
+}
+
+.letter .arrow-down {
+    width: 0;
+    height: 0;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #f0f0f0;
+    border-left: 150px solid transparent;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.letter .arrow-up {
+    width: 0;
+    height: 0;
+    border-right: 150px solid transparent;
+    border-bottom: 110px solid #fafafa;
+    border-left: 150px solid transparent;
+    position: absolute;
+    bottom: 0;
+    z-index: 4;
+    left: 0;
+}
+
+.letter .arrow-left {
+    width: 0;
+    height: 0;
+    border-right: 150px solid whitesmoke;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    position: absolute;
+    right: 0;
+    z-index: 3;
+    top: 0;
+}
+
+.letter .arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    border-left: 150px solid whitesmoke;
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    top: 0;
+}
+
+
+/* CONTAINER UNTUK FLIP CARD */
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    /* Lebar yang sama dengan letter */
+    height: 250px;
+    /* Tinggi disesuaikan untuk pesan */
+    perspective: 1000px;
+    /* Untuk efek 3D */
+    /* Posisikan flip-card persis di atas letter */
+    position: absolute;
+    /* Tetap absolute agar bisa menimpa, tapi konteks relatif ke body */
+    top: 250px;
+    /* Ini akan menjaga posisi relatif terhadap body seperti yang Anda inginkan */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    /* **INI PENTING**: Lebih tinggi dari letter (z-index: 2) */
+    visibility: hidden;
+    /* Sembunyikan secara default */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: white;
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: -100px;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.message-box-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 30px);
+    /* **MODIFIKASI**: Sisakan ruang untuk flip-hint */
+}
+
+.anisah-photo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Pastikan gambar pas di dalam wadah tanpa terpotong */
+    border-radius: 8px;
+    /* Sudut sedikit melengkung */
+}
+
+.message-box-greeting {
+    font-family: "Dancing Script", cursive;
+    margin-top: 0;
+    font-size: 20px;
+    padding: 10px;
+    /* Padding untuk teks */
+}
+
+
+/* --- FITUR BARU: Gaya untuk petunjuk flip --- */
+
+.flip-hint {
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+    font-size: 20px;
+    /* Sedikit lebih kecil dari tap-hint awal */
+    color: #6381f3;
+    /* Warna sesuai tema, mirip gradien background */
+    margin-top: auto;
+    /* Dorong ke bawah dengan flexbox */
+    padding-bottom: 5px;
+    /* Sedikit padding dari bawah kartu */
+    animation: fadeInOut 2s infinite;
+    /* Menggunakan animasi yang sama */
+    width: 100%;
+    /* Memenuhi lebar kartu */
+    /* Posisi absolut tidak diperlukan di sini jika parent flex-direction: column */
+    /* z-index: 10; */
+    /* Tidak perlu z-index yang terlalu tinggi jika di dalam flow flexbox */
+}
+
+.media-btn {
+    position: fixed;
+    /* Menggunakan fixed agar tetap di bawah */
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    color: white;
+    z-index: 10;
+    /* Pastikan di atas yang lain */
+}
